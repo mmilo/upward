@@ -1,0 +1,11 @@
+<% unless @posts.empty? %>
+
+  <% @posts.each do |post| %>
+    <a href="/posts/<%= post.id %>/edit"><%= post.text %></a>
+  <% end %>
+
+<% else %>
+
+  No posts yet
+
+<% end %>
