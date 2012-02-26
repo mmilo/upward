@@ -1,7 +1,7 @@
 <% unless @posts.empty? %>
 
   <% @posts.each do |post| %>
-    <a href="/posts/<%= post.id %>/edit"><%= post.text %></a>
+    <a href="/posts/<%= post.id %>/edit"><%= post.created_at %></a>
   <% end %>
 
 <% else %>

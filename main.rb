@@ -7,7 +7,11 @@ MongoMapper.database.authenticate('rootuser','rootpassword')
 
 class Post
   include MongoMapper::Document
-  key :text, String
+  key :wins, String
+  key :lessons, String
+  key :goals, String
+
+  timestamps!
 end
 
 get '/' do
@@ -20,16 +24,28 @@ get '/posts' do
   erb :list
 end
 
-post '/posts/new' do
-  post = Post.new
-  post.text = (params[:text])
+get '/posts/new' do
+  erb :new
+end
 
-  if post.save
+post '/posts/create' do
+  @post = Post.new
+  @post.wins = (params[:wins])
+  @post.lessons = (params[:lessons])
+  @post.goals = (params[:goals])
+
+  if @post.save
     status 201
   else
     status 401
   end
 
   redirect '/posts'
+end
+
+get '/posts/:id/edit' do
+  @post = Post.find(params[:id])
+
+  erb :edit
 end
 

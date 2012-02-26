@@ -1,0 +1,16 @@
+<form action="posts/<%= @post.id %>/update" method="post">
+  <input type="hidden" name="_method" value="put">
+  <textarea name="wins">
+    <%= @post.wins %>
+  </textarea>
+
+  <textarea name="lessons">
+    <%= @post.lessons %>
+  </textarea>
+
+  <textarea name="goals">
+    <%= @post.goals %>
+  </textarea>
+  <input type="submit" value="save this post" class="button">
+</form>
+
